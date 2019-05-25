@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<head>
+    <style>
+        .back{
+            position:absolute;
+            left:310px;
+            top:50px;
+        } 
+        .area {
+            opacity:0.8;
+            border:10px ridge;
+        }
+        a {
+            font-family: 'Courier New', Courier, monospace;
+            color:black;
+        }
+        h1 {
+            font-family: 'anglicantext-font';
+            margin-bottom:0px;
+        }
+        input[type=submit]{
+            background-color:darkgrey;
+            border: none;
+            color: white;
+            padding: 3px 8px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        @font-face { 
+            font-family: 'stencil'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/stencil.woff') format('woff'); 
+            font-weight: normal; 
+            font-style: normal; }
+        .title {
+            font-family: 'stencil';
+        }
+    </style>
+</head>
+<img src="{% static 'note.jpg'%}" style="width:100%; height:100%; opacity: 0.9; position:fixed;">
+<div class="back">
+    <h1 class="title"><b>단어를 세어보아요! </b> </h1>
+
+    <a href="{% url 'about' %}">ABOUT</a> <!-- 템플릿 테그를 이용해서 url표현하기(html에 파이썬 코드 표현)-->
+
+    <form action="{% url 'result' %}"><!--action속성을 이용해서 form태그 안에 있는 내용을 result함수(view.py안에 있는)로 보낸다-->
+        <textarea class="area" cols="95" rows="27" name="fulltext" style="font-weight: bolder;"></textarea>
+        <br>
+        <input type="submit" value="count"> <!-- submit누르면 views.py안의 result함수로 가서 textarea에서 입력받는 데이터가 언제 어떻게 처리될지 결정됨-->
+    </form>
+</div>

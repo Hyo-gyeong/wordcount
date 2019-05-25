@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<head>
+    <style>
+        div {
+            position: absolute;
+            left:150px;
+            top:70px;
+        }
+        @font-face { 
+            font-family: 'godoMaum'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/godoMaum.woff') format('woff'); 
+            font-weight: normal; 
+            font-style: normal; }
+        * {
+            font-family: 'godoMaum';
+            font-size: 30px; 
+        }
+    </style>
+</head>
+<img src="{% static 'note.jpg'%}" style="width:100%; height:100%; opacity: 0.7; position: fixed;">
+<div>
+    <h1>당신이 입력한 텍스트는 <!--총 단어 수 라는 데이터를 받아다가 적어주는 부분--> {{total}} 로 구성되어 있습니다.</h1>
+
+    <a href="{% url 'home' %}">다시 하기</a>
+    <br>
+    <h2>입력한 텍스트 : </h2>
+    <!--입력받은 전체 텍스트 라는 데이터를 받아다가 적어주는 부분
+        home에서 넘겨받은 full이라는 text값을 찍어주고싶음 = 파이썬 변수(text)를 사용해서 가져오고 싶음 = 템플릿 변수 사용 = text라는 변수를 대표하는 값인 full을 템플릿 변수를 사용해서 적어주기!-->
+        {{full}}
+
+    <h2>단어 카운트 : </h2>
+    <!--'단어'  - '단어가 나온 횟수' 라는 데이터를 받아다가 적어주는 부분 // 논리 : 띄어쓰기를 기준으로 단어를 나눠놓고 반복문을 돌려서
+    새로 만난 단어는 사전형 자료에 새로 추가해서 value값을 1로 설정해놓고 또 다시 만난 단어는 value값을 +1 이렇게 추가해준다-->
+    <!-- {{dictionary}}이렇게 쓰면 dict_items([('어머나', 3), ('ㅁㅎ;딕', 1)])이렇게 너무 솔직하게 나오니까 반복문을 써줘서
+    dictionary{'key1':value2,'key2':value2....} 이 사전형 자료들을 key1은 처음에 value1은 두번째에 key2는 key1밑 처음에 value2은 value1밑 두번쨰에 써줘..라고 명령해야함! -->
+
+    {% for word, howmany in dictionary %} <!--템플릿 변수 사용 //한쌍에 두가지 변수가 있으니까 반복 제어 변수를 두 개(word, howmany)(내가 이름 붙이기) 사용해 줘야함-->
+
+    <!--
+    단어 : 몇 번
+    단어 : 몇 번
+    단어 : 몇 번
+    단어 : 몇 번...을 원하니까-->
+
+    {{word}} : {{howmany}}
+    <br>
+
+    {% endfor %} <!--html 처럼 닫는 태그 필요-->
+    </div>

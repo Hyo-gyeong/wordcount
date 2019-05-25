@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<head>
+    <style>
+        @font-face { 
+            font-family: 'godoMaum'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/godoMaum.woff') format('woff'); 
+            font-weight: normal; 
+            font-style: normal; }
+        p, h1 {
+            font-family: 'godoMaum';
+            font-size:50px;
+        }
+    </style>
+</head>
+<h1>♡상세정보♡</h1>
+
+<p>안녕하세요~~ 이곳은 입력한 텍스트의 글자를 세어주는 곳 입니다!!<br>앞으로 돌아가려면 →<a href="{% url 'home' %}">&#129409;</a>
+←이곳을 클릭하세요!</p>
+<img src="{% static 'lion.png' %}" style="width:500px; height:300px; position:absolute; left: 700px; top:250px;">
